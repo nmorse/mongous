@@ -267,14 +267,16 @@ mongous = function() {
     o = obj[2] ? obj[2] : {};
     o = {
       lim: o.lim !== void 0 ? o.lim : num[0] ? num[0] : 0,
-      skip: o.skip !== void 0 ? o.skip : num[1] ? num[1] : 0
+      skip: o.skip !== void 0 ? o.skip : num[1] ? num[1] : 0,
+      sort: o.sort !== void 0 ? o.sort : {} 
     };
     cmd = {
       collectionName: this.db + '.' + this.col,
       numberToSkip: o.skip,
       numberToReturn: o.lim,
       query: q,
-      returnFieldSelector: f
+      returnFieldSelector: f,
+      orderby: o.sort
     };
     id = this.id();
     docs = [];
